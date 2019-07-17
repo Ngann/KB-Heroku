@@ -54,14 +54,15 @@ class CreateAccount extends Component {
                         placeholder="number"
                     />
                 </Form.Group>
-                {/* <Form.Group controlId="formBasicnumber">
+                
+                <Form.Group controlId="formBasicnumber">
                     <Form.Label>Account Type</Form.Label>
                     <Form.Control
                         className="mb2"
                         value={accountType}
                         onChange={e => this.setState({ accountType: e.target.value })}
                         type="text"
-                        placeholder="number"
+                        placeholder="account type"
                     />
                 </Form.Group>
                 <Form.Group controlId="formBasicnumber">
@@ -71,9 +72,9 @@ class CreateAccount extends Component {
                         value={accountCategory}
                         onChange={e => this.setState({ accountCategory: e.target.value })}
                         type="text"
-                        placeholder="number"
+                        placeholder="account category"
                     />
-                </Form.Group> */}
+                </Form.Group>
                 <ButtonGroup>
                     <Mutation
                         mutation={CREATEACCCOUNT_MUTATION}
