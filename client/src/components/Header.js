@@ -31,6 +31,7 @@ class Header extends Component {
         <Navbar style={navStyle}>
         <Navbar.Brand href="#home">
           <img
+            alt="logo"
             src={logo}
             width="80"
             height="50"
