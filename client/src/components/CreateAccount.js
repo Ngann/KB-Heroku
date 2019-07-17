@@ -7,34 +7,34 @@ const CREATEACCCOUNT_MUTATION = gql`
   mutation CreateAccountMutation(
     $name: String!
     $number: String!
-    $accountType: enumValues!
-    $accountCategory: enumValues!
+    $accountType: String
+    # $accountCategory: enumValues!
   ) {
     createAccount(
       name: $name
       number: $number
       accountType: $accountType
-      accountCategory: $accountCategory
+    #   accountCategory: $accountCategory
     ) {
       id
       name
       number
       accountType
-      accountCategory
+    #   accountCategory
     }
   }
 `;
 
-const ACCOUNTCATEGORY_QUERY = gql`
-    query accountCategory {
-   __type(name:"AccountCategory"){
-    name
-    enumValues{
-      name
-    }
-  }
-}
-`
+// const ACCOUNTCATEGORY_QUERY = gql`
+//     query accountCategory {
+//    __type(name:"AccountCategory"){
+//     name
+//     enumValues{
+//       name
+//     }
+//   }
+// }
+// `
 
 const ACCOUNTTYPE_QUERY = gql`
     query accountType {
@@ -59,11 +59,12 @@ class CreateAccount extends Component {
     name: "",
     number: "",
     accountType: "",
-    accountCategory: ""
+    // accountCategory: ""
   };
 
   render() {
-    const { name, number, accountType, accountCategory } = this.state;
+    // const { name, number, accountType, accountCategory } = this.state;
+    const { name, number, accountType} = this.state;
     return (
       <div className="container" style={containerStyle}>
         <Form.Group controlId="formBasicAccount">
@@ -93,6 +94,7 @@ class CreateAccount extends Component {
             // if (error) return <div>Error</div>
                 if (loading || error) {
                     typeLists = [];
+    
                 } else {
                     typeLists = data.__type.enumValues;
                 }
@@ -115,7 +117,7 @@ class CreateAccount extends Component {
             )
           }}
         </Query>
-        <Query query={ACCOUNTCATEGORY_QUERY}>
+        {/* <Query query={ACCOUNTCATEGORY_QUERY}>
           {({ loading, error, data }) => {
               let categoryLists = []
             // if (loading) return <div>Loading accounts</div>
@@ -144,17 +146,18 @@ class CreateAccount extends Component {
                 </Form.Group>
             )
           }}
-        </Query>
+        </Query> */}
         <ButtonGroup>
           <Mutation
             mutation={CREATEACCCOUNT_MUTATION}
-            variables={{ name, number, accountType, accountCategory }}
+            // variables={{ name, number, accountType, accountCategory }}
+            variables={{ name, number, accountType}}
           >
             {CreateAccountMutation => (
               <Button variant="secondary" onClick={CreateAccountMutation} >
                 Submit
               </Button>
-            )}
+            ) }
           </Mutation>
           <Button variant="danger" onClick={this.props.history.goBack}>
             Cancel

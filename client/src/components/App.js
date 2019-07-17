@@ -17,7 +17,7 @@ import DashboardControl from './DashboardControl';
 import SearchBills from './SearchBills';
 import SearchInvoices from './SearchInvoices';
 import CreateAccount from './CreateAccount';
-// import AccountList from './AccountList';
+import AccountList from './AccountList';
 
 const App = () => (
   <div className="App">
@@ -37,7 +37,7 @@ const App = () => (
       <Route exact path="/invoice" component={InvoiceList} />
       <Route exact path="/chart" component={DashboardControl} />
       <Route exact path="/createaccount" component={CreateAccount} />
-      {/* <Route exact path="/accountlist" component={AccountList} /> */}
+      <Route exact path="/accountlist" component={AccountList} />
     </Switch>
   </div>
 );
