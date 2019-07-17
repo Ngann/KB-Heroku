@@ -7,8 +7,8 @@ const CREATEACCCOUNT_MUTATION = gql`
   mutation CreateAccountMutation(
     $name: String!
     $number: String!
-    $accountType: String!
-    $accountCategory: String!
+    $accountType: enumValues!
+    $accountCategory: enumValues!
   ) {
     createAccount(
       name: $name
@@ -88,26 +88,26 @@ class CreateAccount extends Component {
         </Form.Group>
         <Query query={ACCOUNTTYPE_QUERY}>
           {({ loading, error, data }) => {
-              let menuItems = []
+              let typeLists = []
             // if (loading) return <div>Loading accounts</div>
             // if (error) return <div>Error</div>
                 if (loading || error) {
-                    menuItems = [];
+                    typeLists = [];
                 } else {
-                    menuItems = data.__type.enumValues;
+                    typeLists = data.__type.enumValues;
                 }
             return (
             <Form.Group controlId="formGridState">
             <Form.Label>Account Type</Form.Label>
             <Form.Control as="select"
-            value={this.state.accountType}
+            value={this.state.value}
             onChange={e => this.setState({ accountType: e.target.value })}
             placeholder="Select Account"
             >
             <option>Select Account Type</option>
-            {menuItems.map(Type => (
-                <option key={Type.name} value={Type.name}>
-                {Type.name}
+            {typeLists.map(type => (
+                <option key={type.name} value={type.name}>
+                {type.name}
                 </option>
             ))}
             </Form.Control>
@@ -117,27 +117,27 @@ class CreateAccount extends Component {
         </Query>
         <Query query={ACCOUNTCATEGORY_QUERY}>
           {({ loading, error, data }) => {
-              let menuItems = []
+              let categoryLists = []
             // if (loading) return <div>Loading accounts</div>
             // if (error) return <div>Error</div>
                 if (loading || error) {
-                    menuItems = [];
+                    categoryLists = [];
                 } else {
-                    menuItems = data.__type.enumValues;
+                    categoryLists = data.__type.enumValues;
                 }
             return (
 
                 <Form.Group controlId="formGridState">
                 <Form.Label>Account Category</Form.Label>
                 <Form.Control as="select"
-                value={this.state.accountCategory}
+                value={this.state.value}
                 onChange={e => this.setState({ accountCategory: e.target.value })}
                 placeholder="Select Account Category"
                 >
                 <option>Select Account Category</option>
-                {menuItems.map(Category => (
-                    <option key={Category.name} value={Category.name}>
-                    {Category.name}
+                {categoryLists.map(category => (
+                    <option key={category.name} value={category.name}>
+                    {category.name}
                     </option>
                 ))}
                 </Form.Control>
