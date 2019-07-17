@@ -7,34 +7,34 @@ const CREATEACCCOUNT_MUTATION = gql`
   mutation CreateAccountMutation(
     $name: String!
     $number: String!
-    $accountType: String
-    # $accountCategory: enumValues!
+    $accountType: AccountType
+    $accountCategory: AccountCategory
   ) {
     createAccount(
       name: $name
       number: $number
       accountType: $accountType
-    #   accountCategory: $accountCategory
+      accountCategory: $accountCategory
     ) {
       id
       name
       number
       accountType
-    #   accountCategory
+      accountCategory
     }
   }
 `;
 
-// const ACCOUNTCATEGORY_QUERY = gql`
-//     query accountCategory {
-//    __type(name:"AccountCategory"){
-//     name
-//     enumValues{
-//       name
-//     }
-//   }
-// }
-// `
+const ACCOUNTCATEGORY_QUERY = gql`
+    query accountCategory {
+   __type(name:"AccountCategory"){
+    name
+    enumValues{
+      name
+    }
+  }
+}
+`
 
 const ACCOUNTTYPE_QUERY = gql`
     query accountType {
@@ -59,12 +59,11 @@ class CreateAccount extends Component {
     name: "",
     number: "",
     accountType: "",
-    // accountCategory: ""
+    accountCategory: ""
   };
 
   render() {
-    // const { name, number, accountType, accountCategory } = this.state;
-    const { name, number, accountType} = this.state;
+    const { name, number, accountType, accountCategory } = this.state;
     return (
       <div className="container" style={containerStyle}>
         <Form.Group controlId="formBasicAccount">
@@ -117,7 +116,7 @@ class CreateAccount extends Component {
             )
           }}
         </Query>
-        {/* <Query query={ACCOUNTCATEGORY_QUERY}>
+        <Query query={ACCOUNTCATEGORY_QUERY}>
           {({ loading, error, data }) => {
               let categoryLists = []
             // if (loading) return <div>Loading accounts</div>
@@ -146,12 +145,11 @@ class CreateAccount extends Component {
                 </Form.Group>
             )
           }}
-        </Query> */}
+        </Query>
         <ButtonGroup>
           <Mutation
             mutation={CREATEACCCOUNT_MUTATION}
-            // variables={{ name, number, accountType, accountCategory }}
-            variables={{ name, number, accountType}}
+            variables={{ name, number, accountType, accountCategory }}
           >
             {CreateAccountMutation => (
               <Button variant="secondary" onClick={CreateAccountMutation} >
