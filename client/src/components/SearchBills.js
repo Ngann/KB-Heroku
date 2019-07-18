@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { withApollo } from 'react-apollo'
 import gql from 'graphql-tag'
-import Bill from './Bill'
 import { FormControl, Button, InputGroup, Table} from 'react-bootstrap'
 
 const BILL_SEARCH_QUERY = gql`
@@ -29,18 +28,18 @@ const containerStyle = {
   // padding: '0 20% 0 20%'
 };
 
-const titleStyle = {
-  marginTop: '3%',
-  padding: '0 20% 0 20%',
-  // backgroundColor: '#FDFFCC',
-  // padding: '20% 20% 20% 20%',
-};
+// const titleStyle = {
+//   marginTop: '3%',
+//   padding: '0 20% 0 20%',
+//   // backgroundColor: '#FDFFCC',
+//   // padding: '20% 20% 20% 20%',
+// };
 
-const searchStyle = {
-  marginTop: '3%',
-  // backgroundColor: '#FDFFDD',
-  padding: '0 20% 5% 20%'
-};
+// const searchStyle = {
+//   marginTop: '3%',
+//   // backgroundColor: '#FDFFDD',
+//   padding: '0 20% 5% 20%'
+// };
 
 class SearchBills extends Component {
   state = {

@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Query, Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
-import {Table, Button, Modal, ButtonToolbar, Form} from 'react-bootstrap'
-import MyVerticallyCenteredModal from './Modal'
+import {Table, Button, Modal, Form} from 'react-bootstrap'
 
 const CUSTOMERS_QUERY = gql`
 {
@@ -62,7 +61,7 @@ state = {
 }
 
 render() {
-  let modalClose = () => this.setState({ modalShow: false });
+  // let modalClose = () => this.setState({ modalShow: false });
 
   const { name, contact } = this.state
   return (

@@ -8,6 +8,8 @@ const ACCOUNTS_QUERY = gql`
     id
     name
     number
+    accountType
+    accountCategory
   }
 }
 `
@@ -77,6 +79,8 @@ render() {
             <tr >
               <th>Account Name</th>
               <th>Number</th>
+              <th>Account Type</th>
+              <th>Account Category</th>
               <th >Action</th>
             </tr>
           </thead>
@@ -86,6 +90,8 @@ render() {
                 <tr>
                   <td>{account.name}</td>
                   <td>{account.number}</td>
+                  <td>{account.accountType}</td>
+                  <td>{account.accountCategory}</td>
                   <td>
                 < ButtonGroup size="sm">
                     <Button variant="outline-secondary" onClick={this.handleShow} size="small" >Edit</Button>

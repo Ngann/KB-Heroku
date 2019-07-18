@@ -15,10 +15,6 @@ import {
   MDBBtn
 } from "mdbreact"
 
-import {Form, Button} from 'react-bootstrap'
-import MyVerticallyCenteredModal from './Modal';
-import { NONAME } from 'dns';
-
 const SIGNUP_MUTATION = gql`
   mutation SignupMutation($email: String!, $password: String!, $name: String!) {
     signup(email: $email, password: $password, name: $name) {

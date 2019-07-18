@@ -20,7 +20,6 @@ const BILLS_QUERY = gql`
   }
 }
 `
-
 const DELETEBILL_MUTATION = gql`
 mutation DeleteBillMutation($id: ID!) {
   deleteBill(id: $id) {
