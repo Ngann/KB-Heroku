@@ -1,25 +1,25 @@
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable import/no-named-as-default */
 // @flow
+
 import React, { Suspense, lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import VendorList from './VendorList';
-import BillList from './BillList';
-import CustomerList from './CustomerList';
-import InvoiceList from './InvoiceList';
-import CreateVendor from './CreateVendor';
-import CreateCustomer from './CreateCustomer';
-import CreateBill from './CreateBill';
-import CreateInvoice from './CreateInvoice';
 import Header from './Header';
-import Login from './Login';
-import DashboardControl from './DashboardControl';
-import SearchBills from './SearchBills';
-import SearchInvoices from './SearchInvoices';
-import CreateAccount from './CreateAccount';
-
-
+const VendorList = lazy(()=>  import('./VendorList')) ;
+const BillList = lazy(()=>  import('./BillList')) ;
+const CustomerList = lazy(()=>  import('./CustomerList')) ;
+const InvoiceList = lazy(()=>  import('./InvoiceList')) ;
+const CreateVendor = lazy(()=>  import('./CreateVendor')) ;
+const CreateCustomer = lazy(()=>  import('./CreateCustomer')) ;
+const CreateBill = lazy(()=>  import('./CreateBill')) ;
+const CreateInvoice = lazy(()=>  import('./CreateInvoice')) ;
+const Login = lazy(()=>  import('./Login')) ;
+const DashboardControl = lazy(()=>  import('./DashboardControl'));
+const SearchBills = lazy(()=>  import('./SearchBills')) ;
+const SearchInvoices = lazy(()=>  import('./SearchInvoices')) ;
+const CreateAccount = lazy(()=>  import('./CreateAccount')) ;
 const AccountList = lazy(() => import('./AccountList'));
+
 const App = () => (
   <div className="App">
     <Header />

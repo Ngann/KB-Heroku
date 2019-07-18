@@ -19,7 +19,7 @@ module.exports = {
 
 enum AccountCategory {
   Assets
-  Liablity
+  Liability
   Revenue
   Expense
 }
