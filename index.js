@@ -42,9 +42,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // enable for production only
-server.get('*', (request, response) => {
-	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+// server.get('*', (request, response) => {
+// 	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+// });
 
 server.start(() => console.log(`Server is running on http://localhost:${port}`))
 
