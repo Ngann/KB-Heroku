@@ -54,7 +54,8 @@ type Mutation {
   updateInvoice(id:ID!, customer: String!, date: String!, account: String!, amount: Int!): Invoice
   deleteInvoice(id: ID!): Invoice
 
-  createAccount(name: String!, number: String!, accountType: AccountType, accountCategory: AccountCategory!): Account
+  createAccount(name: String!, number: String!, accountType: AccountType, accountCategory: AccountCategory): Account
+  # createAccount(name: String!, number: String!, accountType: String): Account
   updateAccount(id: ID!, name: String!, number: String!): Account
   deleteAccount(id: ID!): Account
 }
@@ -180,7 +181,7 @@ enum AccountType{
 
 enum AccountCategory{
   Assets
-  Liablity
+  Liability
   Revenue
   Expense
 }
