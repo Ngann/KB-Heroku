@@ -32,20 +32,21 @@ const LOGIN_MUTATION = gql`
 `
 
 const containerStyle = {
-  backgroundColor: '#FDFFFC'
+  // backgroundColor: '#FDFFFC'
+  backgroundColor: "#020100"
 };
 
 const cardStyle = {
+  width: '45%',
   margin: '0 auto',
-  align: 'center',
-  verticalAlign: 'middle',
   border: '1px solid #020100',
+  marginTop: '75px',
   // backgroundColor: "#020100"
   // backgroundColor: '#FDFFFC'
 };
 
 const rowStyle = {
-  width: '30rem',
+  // width: '45%',
   float: 'none',
   margin: '0 auto',
   marginTop:'70px',
@@ -53,7 +54,7 @@ const rowStyle = {
   // marginLeft:'25%',
   // paddingTop:'25%',
   // paddingBottom:'25%',
-  // backgroundColor: '#235789'
+  backgroundColor: '#235789'
 };
 
 const buttonStyle = {
@@ -73,9 +74,11 @@ class Login extends Component {
     const { login, email, password, name } = this.state
     return (
       <MDBContainer 
-      style={containerStyle}
+      // style={containerStyle}
       >
-        <MDBRow style={rowStyle}>
+        <MDBRow 
+        // style={rowStyle}
+        >
           <MDBCol >
             <MDBCard style={cardStyle}>
               <MDBCardBody >

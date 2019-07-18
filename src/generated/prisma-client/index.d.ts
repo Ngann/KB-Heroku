@@ -349,7 +349,12 @@ export type Payment = "CreditCard" | "Bank" | "Cash" | "EFT" | "Checks";
 
 export type Status = "Active" | "Inactive" | "Open" | "Close";
 
-export type AccountCategory = "Assets" | "Liability" | "Revenue" | "Expense";
+export type AccountCategory =
+  | "Assets"
+  | "Liability"
+  | "Liablity"
+  | "Revenue"
+  | "Expense";
 
 export type AccountType = "Debit" | "Credit";
 
