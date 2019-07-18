@@ -72,8 +72,6 @@ render() {
 
       const accountsToRender = data.accounts
 
-      console.log(accountsToRender)
-
       return (
         <div className="container" style={containerStyle}>
           <Table striped hover size="sm" >
