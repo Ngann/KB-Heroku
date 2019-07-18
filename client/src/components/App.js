@@ -13,7 +13,6 @@ const CreateVendor = lazy(()=>  import('./CreateVendor')) ;
 const CreateCustomer = lazy(()=>  import('./CreateCustomer')) ;
 const CreateBill = lazy(()=>  import('./CreateBill')) ;
 const CreateInvoice = lazy(()=>  import('./CreateInvoice')) ;
-
 const Login = lazy(()=>  import('./Login')) ;
 const DashboardControl = lazy(()=>  import('./DashboardControl'));
 const SearchBills = lazy(()=>  import('./SearchBills')) ;
