@@ -28,9 +28,6 @@ async function searchBills(parent, args, context) {
       where: {
         OR: [
           { id_contains: args.filter },
-          { vendor_contains: args.filter },
-          { account_contains: args.filter },
-          // { amount_contains: args.filter },
         ],
       },
     })
@@ -41,9 +38,6 @@ async function searchBills(parent, args, context) {
     where: {
       OR: [
         { id_contains: args.filter },
-        { vendor_contains: args.filter },
-        { account_contains: args.filter },
-        // { amount_contains: args.filter },
       ],
     },
     skip: args.skip,
