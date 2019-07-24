@@ -7,8 +7,8 @@ import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 
 const INVOICE_SEARCH_QUERY = gql`
-  query InvoiceSearchQuery($filter: String!) {
-    searchInvoices(filter: $filter) {
+  query InvoiceSearchQuery($filter: String!, $amountFilter: Int) {
+    searchInvoices(filter: $filter, amountFilter: $amountFilter) {
       invoices {
         id
         customer
@@ -30,6 +30,7 @@ class SearchInvoices extends Component {
   state = {
     invoices: [],
     filter: '',
+    amountFilter: '',
   }
 
   render() {
@@ -48,14 +49,15 @@ class SearchInvoices extends Component {
 
 
   _executeSearch = async () => {
-    const { filter } = this.state
+    const { filter, amountFilter } = this.state
     const result = await this.props.client.query({
       query: INVOICE_SEARCH_QUERY,
-      variables: { filter },
+      variables: { filter, amountFilter },
     })
     const invoices = result.data.searchInvoices.invoices
     this.setState({ invoices })
   }
 }
+
 
 export default withApollo(SearchInvoices)

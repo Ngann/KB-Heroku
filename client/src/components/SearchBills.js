@@ -3,25 +3,51 @@ import { withApollo } from 'react-apollo'
 import gql from 'graphql-tag'
 import { FormControl, Button, InputGroup, Table} from 'react-bootstrap'
 
+// const BILL_SEARCH_QUERY = gql`
+//   query BillSearchQuery($filter: String!) {
+//     searchBills(filter: $filter) {
+//       bills {
+//         id
+//         vendor
+//         date
+//         account
+//         amount
+//         vendorId{
+//           name
+//         }
+//         accountId{
+//           name
+//         }
+//       }
+//     }
+//   }
+// `
+
+
 const BILL_SEARCH_QUERY = gql`
   query BillSearchQuery($filter: String!) {
     searchBills(filter: $filter) {
-      bills {
-        id
-        vendor
-        date
-        account
-        amount
-        vendorId{
-          name
+        bills {
+          id
+          vendor
+          date
+          account
+          amount
+          vendorId {
+            name
+            __typename
+          }
+          accountId {
+            name
+            __typename
+          }
+          __typename
         }
-        accountId{
-          name
-        }
+        __typename
       }
-    }
   }
 `
+
 const containerStyle = {
   marginTop: '10%',
   // backgroundColor: '#DDFFFC',
@@ -72,6 +98,7 @@ class SearchBills extends Component {
         <Table striped hover size="sm" >
           <thead >
             <tr>
+              <th>ID</th>
               <th>Date</th>
               <th>Vendor Name</th>
               <th>Account</th>
@@ -84,9 +111,10 @@ class SearchBills extends Component {
             <Fragment key={bill.id} bill={bill} index={index}>
               <tbody>
                 <tr>
+                  <td>{bill.id}</td>
                   <td>{bill.date}</td>
-                  <td>{bill.vendor}</td>
-                  <td>{bill.account}</td>
+                  <td>{bill.vendorId.name}</td>
+                  <td>{bill.accountId.name}</td>
                   <td>{bill.amount}</td>
                   <td> Open</td>
                 </tr>
@@ -107,7 +135,32 @@ class SearchBills extends Component {
     })
     const bills = result.data.searchBills.bills
     this.setState({ bills })
+    console.log(result)
   }
 }
 
 export default withApollo(SearchBills)
+
+
+// "query BillSearchQuery($filter: String!) {
+//   searchBills(filter: $filter) {
+//     bills {
+//       id
+//       vendor
+//       date
+//       account
+//       amount
+//       vendorId {
+//         name
+//         __typename
+//       }
+//       accountId {
+//         name
+//         __typename
+//       }
+//       __typename
+//     }
+//     __typename
+//   }
+// }
+// "
