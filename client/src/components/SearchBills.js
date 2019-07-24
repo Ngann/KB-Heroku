@@ -3,48 +3,21 @@ import { withApollo } from 'react-apollo'
 import gql from 'graphql-tag'
 import { FormControl, Button, InputGroup, Table} from 'react-bootstrap'
 
-// const BILL_SEARCH_QUERY = gql`
-//   query BillSearchQuery($filter: String!) {
-//     searchBills(filter: $filter) {
-//       bills {
-//         id
-//         vendor
-//         date
-//         account
-//         amount
-//         vendorId{
-//           name
-//         }
-//         accountId{
-//           name
-//         }
-//       }
-//     }
-//   }
-// `
-
-
 const BILL_SEARCH_QUERY = gql`
   query BillSearchQuery($filter: String!) {
     searchBills(filter: $filter) {
-        bills {
-          id
-          vendor
-          date
-          account
-          amount
-          vendorId {
-            name
-            __typename
-          }
-          accountId {
-            name
-            __typename
-          }
-          __typename
+      bills {
+        id
+        date
+        amount
+        vendorId{
+          name
         }
-        __typename
+        accountId{
+          name
+        }
       }
+    }
   }
 `
 
@@ -126,7 +99,6 @@ class SearchBills extends Component {
     )
   }
 
-
   _executeSearch = async () => {
     const { filter } = this.state
     const result = await this.props.client.query({
@@ -140,27 +112,3 @@ class SearchBills extends Component {
 }
 
 export default withApollo(SearchBills)
-
-
-// "query BillSearchQuery($filter: String!) {
-//   searchBills(filter: $filter) {
-//     bills {
-//       id
-//       vendor
-//       date
-//       account
-//       amount
-//       vendorId {
-//         name
-//         __typename
-//       }
-//       accountId {
-//         name
-//         __typename
-//       }
-//       __typename
-//     }
-//     __typename
-//   }
-// }
-// "
