@@ -186,7 +186,7 @@ class VendorList extends Component {
                                 this.setState({ name: e.target.value })
                               }
                               type="text"
-                              placeholder=""
+                              placeholder={vendor.name}
                             />
                           </Col>
                           <Col>
@@ -198,7 +198,7 @@ class VendorList extends Component {
                                 this.setState({ contact: e.target.value })
                               }
                               type="text"
-                              placeholder=""
+                              placeholder={vendor.contact}
                             />
                           </Col>
                         </Form.Row>
@@ -212,7 +212,7 @@ class VendorList extends Component {
                               this.setState({ address: e.target.value })
                             }
                             type="text"
-                            placeholder="1234 Main St"
+                            placeholder={vendor.address}
                           />
                         </Form.Group>
                         <Form.Group controlId="formBasicContact">
@@ -224,7 +224,7 @@ class VendorList extends Component {
                               this.setState({ addressTwo: e.target.value })
                             }
                             type="text"
-                            placeholder="Apartment, studio, or floor"
+                            placeholder={vendor.addressTwo}
                           />
                         </Form.Group>
                         <Form.Row>
@@ -238,7 +238,7 @@ class VendorList extends Component {
                                   this.setState({ city: e.target.value })
                                 }
                                 type="text"
-                                placeholder=""
+                                placeholder={vendor.city}
                               />
                             </Form.Group>
                           </Col>
@@ -252,7 +252,7 @@ class VendorList extends Component {
                                   this.setState({ state: e.target.value })
                                 }
                                 type="text"
-                                placeholder=""
+                                placeholder={vendor.state}
                               />
                             </Form.Group>
                           </Col>
@@ -267,7 +267,7 @@ class VendorList extends Component {
                                   this.setState({ country: e.target.value })
                                 }
                                 type="text"
-                                placeholder=""
+                                placeholder={vendor.country}
                               />
                             </Form.Group>
                           </Col>
