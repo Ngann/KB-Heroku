@@ -181,7 +181,6 @@ enum AccountType{
 enum AccountCategory{
   Assets
   Liability
-  Liablity
   Revenue
   Expense
 }
