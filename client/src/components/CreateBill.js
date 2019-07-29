@@ -94,7 +94,7 @@ class CreateBill extends Component {
             const accountList = data.accounts
             return (
               <Form.Group controlId="formGridState">
-                <Form.Label>account</Form.Label>
+                <Form.Label>Account</Form.Label>
                 <Form.Control as="select"
                   value={this.state.value}
                   onChange={e => this.setState({ account: e.target.value })}

@@ -1,7 +1,7 @@
 scalar DateTime
 
 type Query {
-  searchBills(filter: String, skip: Int, first: Int, orderBy: LinkOrderByInput): SearchBills!
+  searchBills(filter: String , skip: Int, first: Int, orderBy: LinkOrderByInput): SearchBills!
   searchInvoices(filter: String, amountFilter: Int, skip: Int, first: Int, orderBy: LinkOrderByInput): SearchInvoices!
   vendors: [Vendor!]!
   bills: [Bill!]!

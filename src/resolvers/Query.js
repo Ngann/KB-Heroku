@@ -59,7 +59,7 @@ async function searchInvoices(parent, args, context) {
         OR: [
           { customer_contains: args.filter },
           { account_contains: args.filter },
-          { amount_contains: args.amountFilter },
+          // { amount_contains: args.amountFilter },
         ],
       },
     })
@@ -70,7 +70,7 @@ async function searchInvoices(parent, args, context) {
       OR: [
         { customer_contains: args.filter },
         { account_contains: args.filter },
-        { amount_contains: args.amountFilter },
+        // { amount_contains: args.amountFilter },
       ],
     },
     skip: args.skip,
