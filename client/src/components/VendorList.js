@@ -1,43 +1,66 @@
-import React, { Component, Fragment } from 'react'
-import { Query, Mutation } from 'react-apollo'
-import gql from 'graphql-tag'
-import { ButtonGroup, Table, Button, Modal, Form } from 'react-bootstrap';
+import React, { Component, Fragment } from "react";
+import { Query, Mutation } from "react-apollo";
+import gql from "graphql-tag";
+import { ButtonGroup, Table, Button, Modal, Form, Col } from "react-bootstrap";
 
 const VENDORS_QUERY = gql`
-{
-  vendors {
-    id
-    name
-    contact
-    address
-    addressTwo
-    city
-    state
-    country
-    createdAt
+  {
+    vendors {
+      id
+      name
+      contact
+      address
+      addressTwo
+      city
+      state
+      country
+      createdAt
+    }
   }
-}
-`
+`;
 const DELETEVENDOR_MUTATION = gql`
-mutation DeleteVendorMutation($id: ID!) {
-  deleteVendor(id: $id) {
-    id
+  mutation DeleteVendorMutation($id: ID!) {
+    deleteVendor(id: $id) {
+      id
+    }
   }
-}
-`
+`;
 
 const UPDATEVENDOR_MUTATION = gql`
-mutation UpdateVendorMutation($id: ID!, $name: String!, $contact: String!) {
-  updateVendor(id: $id, name: $name, contact: $contact) {
-    name
-    contact
+  mutation UpdateVendorMutation(
+    $id: ID!
+    $name: String!
+    $contact: String!
+    $address: String!
+    $addressTwo: String!
+    $city: String!
+    $state: String!
+    $country: String!
+  ) {
+    updateVendor(
+      id: $id
+      name: $name
+      contact: $contact
+      address: $address
+      addressTwo: $addressTwo
+      city: $city
+      state: $state
+      country: $country
+    ) {
+      name
+      contact
+      address
+      addressTwo
+      city
+      state
+      country
+    }
   }
-}
-`
+`;
 
 const containerStyle = {
-  marginTop: '10%',
-  backgroundColor: '#FDFFFC'
+  marginTop: "10%",
+  backgroundColor: "#FDFFFC"
 };
 
 class VendorList extends Component {
@@ -48,7 +71,7 @@ class VendorList extends Component {
     this.handleClose = this.handleClose.bind(this);
 
     this.state = {
-      show: false,
+      show: false
     };
   }
 
@@ -61,9 +84,14 @@ class VendorList extends Component {
   }
 
   state = {
-    name: '',
-    contact: '',
-  }
+    name: "",
+    contact: "",
+    address: "",
+    addressTwo: "",
+    city: "",
+    state: "",
+    country: ""
+  };
   // _updateCacheAfterDelete = (store) => {
   //   const data = store.readQuery({ query: VENDORS_QUERY })
   //   // const vendorDelete = data.vendors.find(vendor => vendor.id === vendorId)
@@ -72,20 +100,26 @@ class VendorList extends Component {
   // }
 
   render() {
-
-    const { name, contact } = this.state
+    const {
+      name,
+      contact,
+      address,
+      addressTwo,
+      city,
+      state,
+      country
+    } = this.state;
     return (
-
       <Query query={VENDORS_QUERY}>
         {({ loading, error, data }) => {
-          if (loading) return <div>Fetching</div>
-          if (error) return <div>Error</div>
+          if (loading) return <div>Fetching</div>;
+          if (error) return <div>Error</div>;
 
-          const vendorsToRender = data.vendors
+          const vendorsToRender = data.vendors;
 
           return (
             <div className="container" style={containerStyle}>
-              <Table striped hover size="sm" >
+              <Table striped hover size="sm">
                 <thead>
                   <tr>
                     <th>Vendor Name</th>
@@ -97,7 +131,7 @@ class VendorList extends Component {
                   </tr>
                 </thead>
                 {vendorsToRender.map(vendor => (
-                  <Fragment key={vendor.id} >
+                  <Fragment key={vendor.id}>
                     <tbody>
                       <tr>
                         <td>{vendor.name}</td>
@@ -107,21 +141,33 @@ class VendorList extends Component {
                         <td>{vendor.state}</td>
                         <td>
                           <ButtonGroup size="sm">
-                          <Button variant="outline-secondary" onClick={this.handleShow}>
-                            Edit
-                          </Button> 
-                          <Mutation
-                            mutation={DELETEVENDOR_MUTATION}
-                            variables={{ id: vendor.id }}
-                            onCompleted={() => this.props.history.push('/')}
-                          >
-                            {deleteVendorMutation => <Button variant="outline-secondary" onClick={deleteVendorMutation}>Delete</Button>}
-                          </Mutation>
+                            <Button
+                              variant="outline-secondary"
+                              onClick={this.handleShow}
+                            >
+                              Edit
+                            </Button>
+                            <Mutation
+                              mutation={DELETEVENDOR_MUTATION}
+                              variables={{ id: vendor.id }}
+                              onCompleted={() => this.props.history.push("/")}
+                            >
+                              {deleteVendorMutation => (
+                                <Button
+                                  variant="outline-secondary"
+                                  onClick={deleteVendorMutation}
+                                >
+                                  Delete
+                                </Button>
+                              )}
+                            </Mutation>
                           </ButtonGroup>
-                          </td>
+                        </td>
                       </tr>
                     </tbody>
-                    <Modal show={this.state.show} onHide={this.handleClose} 
+                    <Modal
+                      show={this.state.show}
+                      onHide={this.handleClose}
                       size="lg"
                       aria-labelledby="contained-modal-title-vcenter"
                       centered
@@ -130,35 +176,125 @@ class VendorList extends Component {
                         <Modal.Title>Vendor: {vendor.name}</Modal.Title>
                       </Modal.Header>
                       <Modal.Body>
-                      <Form.Group controlId="formBasicCustomer">
-                      <Form.Label>Vendor Name</Form.Label>
-                      <Form.Control
-                          className="mb2"
-                          value={name}
-                          onChange={e => this.setState({ name: e.target.value })}
-                          type="text"
-                          placeholder="A name"
-                      />
-                      </Form.Group>
-                      <Form.Group controlId="formBasicContact">
-                      <Form.Label>Contact</Form.Label>
-                      <Form.Control
-                          className="mb2"
-                          value={contact}
-                          onChange={e => this.setState({ contact: e.target.value })}
-                          type="text"
-                          placeholder="contact"
-                      />
-                      </Form.Group>
+                        <Form.Row>
+                          <Col>
+                            <Form.Label>Vendor Name</Form.Label>
+                            <Form.Control
+                              className="mb2"
+                              value={name}
+                              onChange={e =>
+                                this.setState({ name: e.target.value })
+                              }
+                              type="text"
+                              placeholder=""
+                            />
+                          </Col>
+                          <Col>
+                            <Form.Label>Phone</Form.Label>
+                            <Form.Control
+                              className="mb2"
+                              value={contact}
+                              onChange={e =>
+                                this.setState({ contact: e.target.value })
+                              }
+                              type="text"
+                              placeholder=""
+                            />
+                          </Col>
+                        </Form.Row>
+
+                        <Form.Group controlId="formBasicContact">
+                          <Form.Label>Address</Form.Label>
+                          <Form.Control
+                            className="mb2"
+                            value={address}
+                            onChange={e =>
+                              this.setState({ address: e.target.value })
+                            }
+                            type="text"
+                            placeholder="1234 Main St"
+                          />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicContact">
+                          <Form.Label>Address 2</Form.Label>
+                          <Form.Control
+                            className="mb2"
+                            value={addressTwo}
+                            onChange={e =>
+                              this.setState({ addressTwo: e.target.value })
+                            }
+                            type="text"
+                            placeholder="Apartment, studio, or floor"
+                          />
+                        </Form.Group>
+                        <Form.Row>
+                          <Col>
+                            <Form.Group controlId="formBasicContact">
+                              <Form.Label>City</Form.Label>
+                              <Form.Control
+                                className="mb2"
+                                value={city}
+                                onChange={e =>
+                                  this.setState({ city: e.target.value })
+                                }
+                                type="text"
+                                placeholder=""
+                              />
+                            </Form.Group>
+                          </Col>
+                          <Col>
+                            <Form.Group controlId="formBasicContact">
+                              <Form.Label>State</Form.Label>
+                              <Form.Control
+                                className="mb2"
+                                value={state}
+                                onChange={e =>
+                                  this.setState({ state: e.target.value })
+                                }
+                                type="text"
+                                placeholder=""
+                              />
+                            </Form.Group>
+                          </Col>
+
+                          <Col>
+                            <Form.Group controlId="formBasicContact">
+                              <Form.Label>Zip</Form.Label>
+                              <Form.Control
+                                className="mb2"
+                                value={country}
+                                onChange={e =>
+                                  this.setState({ country: e.target.value })
+                                }
+                                type="text"
+                                placeholder=""
+                              />
+                            </Form.Group>
+                          </Col>
+                        </Form.Row>
                       </Modal.Body>
                       <Modal.Footer>
                         <Button variant="secondary" onClick={this.handleClose}>
                           Close
-                  </Button>
+                        </Button>
                         <Mutation
                           mutation={UPDATEVENDOR_MUTATION}
-                          variables={{ id: vendor.id, name, contact }}>
-                          {updateVendorMutation => <Button onClick={updateVendorMutation}>Save Changes</Button>}
+                          variables={{
+                            id: vendor.id,
+                            name,
+                            contact,
+                            address,
+                            addressTwo,
+                            city,
+                            state,
+                            country
+                          }}
+                        >
+                          {updateVendorMutation => (
+                            <Button onClick={updateVendorMutation}>
+                              Save Changes
+                            </Button>
+                          )}
                         </Mutation>
                       </Modal.Footer>
                     </Modal>
@@ -166,11 +302,11 @@ class VendorList extends Component {
                 ))}
               </Table>
             </div>
-          )
+          );
         }}
       </Query>
-    )
+    );
   }
 }
 
-export default VendorList
+export default VendorList;

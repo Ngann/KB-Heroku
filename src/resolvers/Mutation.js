@@ -23,6 +23,12 @@ function updateVendor(parent, args, context) {
     data: {
       name: args.name,
       contact: args.contact,
+      address: args.address,
+      addressTwo: args.addressTwo,
+      city: args.city,
+      state: args.state,
+      country: args.country,
+      phone: args.phone,
     }
   })
 }
