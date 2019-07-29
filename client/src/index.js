@@ -21,8 +21,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 const port = process.env.PORT || 4000;
 const httpLink = createHttpLink({
-  uri: `http://localhost:${port}`,
-  // uri: `https://keepbook-123.herokuapp.com`,
+  // uri: `http://localhost:${port}`,
+  uri: `https://keepbook-123.herokuapp.com`,
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -36,8 +36,8 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-const GRAPHQL_ENDPOINT = `ws://localhost:${port}`;
-// const GRAPHQL_ENDPOINT = `wss://keepbook-123.herokuapp.com`;
+// const GRAPHQL_ENDPOINT = `ws://localhost:${port}`;
+const GRAPHQL_ENDPOINT = `wss://keepbook-123.herokuapp.com`;
 
 const wsClient = new SubscriptionClient(GRAPHQL_ENDPOINT, {
   reconnect: true,
