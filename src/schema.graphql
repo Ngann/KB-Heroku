@@ -1,8 +1,8 @@
 scalar DateTime
 
 type Query {
-  searchBills(filter: String, skip: Int, first: Int, orderBy: LinkOrderByInput): SearchBills!
-  searchInvoices(filter: String, skip: Int, first: Int, orderBy: LinkOrderByInput): SearchInvoices!
+  searchBills(filter: String , skip: Int, first: Int, orderBy: LinkOrderByInput): SearchBills!
+  searchInvoices(filter: String, amountFilter: Int, skip: Int, first: Int, orderBy: LinkOrderByInput): SearchInvoices!
   vendors: [Vendor!]!
   bills: [Bill!]!
   invoices: [Invoice!]!
@@ -55,7 +55,6 @@ type Mutation {
   deleteInvoice(id: ID!): Invoice
 
   createAccount(name: String!, number: String!, accountType: AccountType, accountCategory: AccountCategory): Account
-  # createAccount(name: String!, number: String!, accountType: String): Account
   updateAccount(id: ID!, name: String!, number: String!): Account
   deleteAccount(id: ID!): Account
 }
@@ -182,6 +181,7 @@ enum AccountType{
 enum AccountCategory{
   Assets
   Liability
+  Liablity
   Revenue
   Expense
 }

@@ -8,9 +8,7 @@ const BILL_SEARCH_QUERY = gql`
     searchBills(filter: $filter) {
       bills {
         id
-        vendor
         date
-        account
         amount
         vendorId{
           name
@@ -22,6 +20,7 @@ const BILL_SEARCH_QUERY = gql`
     }
   }
 `
+
 const containerStyle = {
   marginTop: '10%',
   // backgroundColor: '#DDFFFC',
@@ -72,6 +71,7 @@ class SearchBills extends Component {
         <Table striped hover size="sm" >
           <thead >
             <tr>
+              <th>ID</th>
               <th>Date</th>
               <th>Vendor Name</th>
               <th>Account</th>
@@ -84,9 +84,10 @@ class SearchBills extends Component {
             <Fragment key={bill.id} bill={bill} index={index}>
               <tbody>
                 <tr>
+                  <td>{bill.id}</td>
                   <td>{bill.date}</td>
-                  <td>{bill.vendor}</td>
-                  <td>{bill.account}</td>
+                  <td>{bill.vendorId.name}</td>
+                  <td>{bill.accountId.name}</td>
                   <td>{bill.amount}</td>
                   <td> Open</td>
                 </tr>
@@ -98,7 +99,6 @@ class SearchBills extends Component {
     )
   }
 
-
   _executeSearch = async () => {
     const { filter } = this.state
     const result = await this.props.client.query({
@@ -107,6 +107,7 @@ class SearchBills extends Component {
     })
     const bills = result.data.searchBills.bills
     this.setState({ bills })
+    console.log(result)
   }
 }
 

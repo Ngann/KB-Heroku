@@ -27,18 +27,17 @@ async function searchBills(parent, args, context) {
     .billsConnection({
       where: {
         OR: [
-          { vendor_contains: args.filter },
-          { account_contains: args.filter },
+          { id_contains: args.filter },
         ],
       },
     })
     .aggregate()
     .count()
+
   const bills = await context.prisma.bills({
     where: {
       OR: [
-        { vendor_contains: args.filter },
-        { account_contains: args.filter },
+        { id_contains: args.filter },
       ],
     },
     skip: args.skip,
@@ -51,6 +50,8 @@ async function searchBills(parent, args, context) {
   }
 }
 
+
+// graph QL filter takes a string and not an int for amount, which is why amount does not work
 async function searchInvoices(parent, args, context) {
   const count = await context.prisma
     .invoicesConnection({
@@ -58,6 +59,7 @@ async function searchInvoices(parent, args, context) {
         OR: [
           { customer_contains: args.filter },
           { account_contains: args.filter },
+          // { amount_contains: args.amountFilter },
         ],
       },
     })
@@ -68,6 +70,7 @@ async function searchInvoices(parent, args, context) {
       OR: [
         { customer_contains: args.filter },
         { account_contains: args.filter },
+        // { amount_contains: args.amountFilter },
       ],
     },
     skip: args.skip,
