@@ -80,7 +80,6 @@ class SearchBills extends Component {
             </tr>
           </thead>
           {this.state.bills.map((bill, index) => (
-            // <Bill key={bill.id} bill={bill} index={index}/>
             <Fragment key={bill.id} bill={bill} index={index}>
               <tbody>
                 <tr>
