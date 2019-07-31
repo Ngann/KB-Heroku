@@ -60,7 +60,7 @@ type Invoice {
   customer: String!
   date: String!
   account: String!
-  amount: Int!
+  amount: Float!
   postedBy: User
 }
 

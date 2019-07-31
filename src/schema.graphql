@@ -46,12 +46,12 @@ type Mutation {
   updateCustomer(id: ID!, name: String!, contact: String!): Customer
   deleteCustomer(id: ID!): Customer
 
-  createBill(vendor: String!, date: String!, account: String!, amount: Int!, paymentStatus: Balance): Bill
-  updateBill(id:ID!, vendor: String, date: String, account: String, amount: Int, paymentStatus: Balance, paymentType: Payment, status: Status): Bill
+  createBill(vendor: String!, date: String!, account: String!, amount: Float!, paymentStatus: Balance): Bill
+  updateBill(id:ID!, vendor: String, date: String, account: String, amount: Float, paymentStatus: Balance, paymentType: Payment, status: Status): Bill
   deleteBill(id: ID!): Bill
 
-  createInvoice(customer: String!, date: String!, account: String!, amount: Int!): Invoice
-  updateInvoice(id:ID!, customer: String!, date: String!, account: String!, amount: Int!): Invoice
+  createInvoice(customer: String!, date: String!, account: String!, amount: Float!): Invoice
+  updateInvoice(id:ID!, customer: String!, date: String!, account: String!, amount: Float!): Invoice
   deleteInvoice(id: ID!): Invoice
 
   createAccount(name: String!, number: String!, accountType: AccountType, accountCategory: AccountCategory): Account
@@ -122,7 +122,7 @@ type Invoice {
   customer: String!
   date: String!
   account: String!
-  amount: Int!
+  amount: Float!
   postedBy: User
 }
 

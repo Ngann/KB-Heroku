@@ -1112,14 +1112,14 @@ export interface InvoiceWhereInput {
   account_not_starts_with?: Maybe<String>;
   account_ends_with?: Maybe<String>;
   account_not_ends_with?: Maybe<String>;
-  amount?: Maybe<Int>;
-  amount_not?: Maybe<Int>;
-  amount_in?: Maybe<Int[] | Int>;
-  amount_not_in?: Maybe<Int[] | Int>;
-  amount_lt?: Maybe<Int>;
-  amount_lte?: Maybe<Int>;
-  amount_gt?: Maybe<Int>;
-  amount_gte?: Maybe<Int>;
+  amount?: Maybe<Float>;
+  amount_not?: Maybe<Float>;
+  amount_in?: Maybe<Float[] | Float>;
+  amount_not_in?: Maybe<Float[] | Float>;
+  amount_lt?: Maybe<Float>;
+  amount_lte?: Maybe<Float>;
+  amount_gt?: Maybe<Float>;
+  amount_gte?: Maybe<Float>;
   postedBy?: Maybe<UserWhereInput>;
   AND?: Maybe<InvoiceWhereInput[] | InvoiceWhereInput>;
   OR?: Maybe<InvoiceWhereInput[] | InvoiceWhereInput>;
@@ -2689,7 +2689,7 @@ export interface InvoiceCreateInput {
   customer: String;
   date: String;
   account: String;
-  amount: Int;
+  amount: Float;
   postedBy?: Maybe<UserCreateOneInput>;
 }
 
@@ -2697,7 +2697,7 @@ export interface InvoiceUpdateInput {
   customer?: Maybe<String>;
   date?: Maybe<String>;
   account?: Maybe<String>;
-  amount?: Maybe<Int>;
+  amount?: Maybe<Float>;
   postedBy?: Maybe<UserUpdateOneInput>;
 }
 
@@ -2705,7 +2705,7 @@ export interface InvoiceUpdateManyMutationInput {
   customer?: Maybe<String>;
   date?: Maybe<String>;
   account?: Maybe<String>;
-  amount?: Maybe<Int>;
+  amount?: Maybe<Float>;
 }
 
 export interface UserUpdateInput {
@@ -3689,7 +3689,7 @@ export interface Invoice {
   customer: String;
   date: String;
   account: String;
-  amount: Int;
+  amount: Float;
 }
 
 export interface InvoicePromise extends Promise<Invoice>, Fragmentable {
@@ -3699,7 +3699,7 @@ export interface InvoicePromise extends Promise<Invoice>, Fragmentable {
   customer: () => Promise<String>;
   date: () => Promise<String>;
   account: () => Promise<String>;
-  amount: () => Promise<Int>;
+  amount: () => Promise<Float>;
   postedBy: <T = UserPromise>() => T;
 }
 
@@ -3712,7 +3712,7 @@ export interface InvoiceSubscription
   customer: () => Promise<AsyncIterator<String>>;
   date: () => Promise<AsyncIterator<String>>;
   account: () => Promise<AsyncIterator<String>>;
-  amount: () => Promise<AsyncIterator<Int>>;
+  amount: () => Promise<AsyncIterator<Float>>;
   postedBy: <T = UserSubscription>() => T;
 }
 
@@ -3725,7 +3725,7 @@ export interface InvoiceNullablePromise
   customer: () => Promise<String>;
   date: () => Promise<String>;
   account: () => Promise<String>;
-  amount: () => Promise<Int>;
+  amount: () => Promise<Float>;
   postedBy: <T = UserPromise>() => T;
 }
 
@@ -4175,7 +4175,7 @@ export interface InvoicePreviousValues {
   customer: String;
   date: String;
   account: String;
-  amount: Int;
+  amount: Float;
 }
 
 export interface InvoicePreviousValuesPromise
@@ -4187,7 +4187,7 @@ export interface InvoicePreviousValuesPromise
   customer: () => Promise<String>;
   date: () => Promise<String>;
   account: () => Promise<String>;
-  amount: () => Promise<Int>;
+  amount: () => Promise<Float>;
 }
 
 export interface InvoicePreviousValuesSubscription
@@ -4199,7 +4199,7 @@ export interface InvoicePreviousValuesSubscription
   customer: () => Promise<AsyncIterator<String>>;
   date: () => Promise<AsyncIterator<String>>;
   account: () => Promise<AsyncIterator<String>>;
-  amount: () => Promise<AsyncIterator<Int>>;
+  amount: () => Promise<AsyncIterator<Float>>;
 }
 
 export interface UserSubscriptionPayload {
