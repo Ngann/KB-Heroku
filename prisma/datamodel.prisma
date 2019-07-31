@@ -44,7 +44,7 @@ type Bill {
   vendor: String!
   date: String!
   account: String!
-  amount: Int!
+  amount: Float!
   postedBy: User
   vendorId: Vendor
   accountId: Account

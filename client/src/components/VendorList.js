@@ -90,7 +90,7 @@ class VendorList extends Component {
   //   // vendorDelete.vendor =
   //   store.writeQuery({ query: VENDORS_QUERY, data })
   // }
-
+ 
   render() {
     const {
       currentVendor:{
@@ -182,8 +182,8 @@ class VendorList extends Component {
                       <Form.Label>Vendor Name</Form.Label>
                       <Form.Control
                         className="mb2"
-                        value={name}
-                        onChange={e => this.setState({ name: e.target.value })}
+                        value={this.state.name}
+                        onChange={e => this.setState({name: e.target.value })}
                         type="text"
                         placeholder={currentVendor.name}
                       />
@@ -209,7 +209,7 @@ class VendorList extends Component {
                       value={address}
                       onChange={e => this.setState({ address: e.target.value })}
                       type="text"
-                      placeholder={currentVendor.address}
+                      // placeholder={currentVendor.address}
                     />
                   </Form.Group>
                   <Form.Group controlId="formBasicContact">
