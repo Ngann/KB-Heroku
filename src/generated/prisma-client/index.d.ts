@@ -925,14 +925,14 @@ export interface BillWhereInput {
   account_not_starts_with?: Maybe<String>;
   account_ends_with?: Maybe<String>;
   account_not_ends_with?: Maybe<String>;
-  amount?: Maybe<Int>;
-  amount_not?: Maybe<Int>;
-  amount_in?: Maybe<Int[] | Int>;
-  amount_not_in?: Maybe<Int[] | Int>;
-  amount_lt?: Maybe<Int>;
-  amount_lte?: Maybe<Int>;
-  amount_gt?: Maybe<Int>;
-  amount_gte?: Maybe<Int>;
+  amount?: Maybe<Float>;
+  amount_not?: Maybe<Float>;
+  amount_in?: Maybe<Float[] | Float>;
+  amount_not_in?: Maybe<Float[] | Float>;
+  amount_lt?: Maybe<Float>;
+  amount_lte?: Maybe<Float>;
+  amount_gt?: Maybe<Float>;
+  amount_gte?: Maybe<Float>;
   postedBy?: Maybe<UserWhereInput>;
   vendorId?: Maybe<VendorWhereInput>;
   accountId?: Maybe<AccountWhereInput>;
@@ -1112,14 +1112,14 @@ export interface InvoiceWhereInput {
   account_not_starts_with?: Maybe<String>;
   account_ends_with?: Maybe<String>;
   account_not_ends_with?: Maybe<String>;
-  amount?: Maybe<Int>;
-  amount_not?: Maybe<Int>;
-  amount_in?: Maybe<Int[] | Int>;
-  amount_not_in?: Maybe<Int[] | Int>;
-  amount_lt?: Maybe<Int>;
-  amount_lte?: Maybe<Int>;
-  amount_gt?: Maybe<Int>;
-  amount_gte?: Maybe<Int>;
+  amount?: Maybe<Float>;
+  amount_not?: Maybe<Float>;
+  amount_in?: Maybe<Float[] | Float>;
+  amount_not_in?: Maybe<Float[] | Float>;
+  amount_lt?: Maybe<Float>;
+  amount_lte?: Maybe<Float>;
+  amount_gt?: Maybe<Float>;
+  amount_gte?: Maybe<Float>;
   postedBy?: Maybe<UserWhereInput>;
   AND?: Maybe<InvoiceWhereInput[] | InvoiceWhereInput>;
   OR?: Maybe<InvoiceWhereInput[] | InvoiceWhereInput>;
@@ -1212,7 +1212,7 @@ export interface BillCreateWithoutAccountIdInput {
   vendor: String;
   date: String;
   account: String;
-  amount: Int;
+  amount: Float;
   postedBy?: Maybe<UserCreateOneWithoutBillsInput>;
   vendorId?: Maybe<VendorCreateOneWithoutBillsInput>;
   paymentStatus?: Maybe<Balance>;
@@ -1333,7 +1333,7 @@ export interface BillCreateWithoutVendorIdInput {
   vendor: String;
   date: String;
   account: String;
-  amount: Int;
+  amount: Float;
   postedBy?: Maybe<UserCreateOneWithoutBillsInput>;
   accountId?: Maybe<AccountCreateOneWithoutBillsInput>;
   paymentStatus?: Maybe<Balance>;
@@ -1400,7 +1400,7 @@ export interface BillCreateWithoutPostedByInput {
   vendor: String;
   date: String;
   account: String;
-  amount: Int;
+  amount: Float;
   vendorId?: Maybe<VendorCreateOneWithoutBillsInput>;
   accountId?: Maybe<AccountCreateOneWithoutBillsInput>;
   paymentStatus?: Maybe<Balance>;
@@ -1436,7 +1436,7 @@ export interface BillCreateInput {
   vendor: String;
   date: String;
   account: String;
-  amount: Int;
+  amount: Float;
   postedBy?: Maybe<UserCreateOneWithoutBillsInput>;
   vendorId?: Maybe<VendorCreateOneWithoutBillsInput>;
   accountId?: Maybe<AccountCreateOneWithoutBillsInput>;
@@ -1588,7 +1588,7 @@ export interface BillUpdateWithoutAccountIdDataInput {
   vendor?: Maybe<String>;
   date?: Maybe<String>;
   account?: Maybe<String>;
-  amount?: Maybe<Int>;
+  amount?: Maybe<Float>;
   postedBy?: Maybe<UserUpdateOneWithoutBillsInput>;
   vendorId?: Maybe<VendorUpdateOneWithoutBillsInput>;
   paymentStatus?: Maybe<Balance>;
@@ -1797,7 +1797,7 @@ export interface BillUpdateWithoutVendorIdDataInput {
   vendor?: Maybe<String>;
   date?: Maybe<String>;
   account?: Maybe<String>;
-  amount?: Maybe<Int>;
+  amount?: Maybe<Float>;
   postedBy?: Maybe<UserUpdateOneWithoutBillsInput>;
   accountId?: Maybe<AccountUpdateOneWithoutBillsInput>;
   paymentStatus?: Maybe<Balance>;
@@ -1892,7 +1892,7 @@ export interface BillUpdateWithoutPostedByDataInput {
   vendor?: Maybe<String>;
   date?: Maybe<String>;
   account?: Maybe<String>;
-  amount?: Maybe<Int>;
+  amount?: Maybe<Float>;
   vendorId?: Maybe<VendorUpdateOneWithoutBillsInput>;
   accountId?: Maybe<AccountUpdateOneWithoutBillsInput>;
   paymentStatus?: Maybe<Balance>;
@@ -2005,14 +2005,14 @@ export interface BillScalarWhereInput {
   account_not_starts_with?: Maybe<String>;
   account_ends_with?: Maybe<String>;
   account_not_ends_with?: Maybe<String>;
-  amount?: Maybe<Int>;
-  amount_not?: Maybe<Int>;
-  amount_in?: Maybe<Int[] | Int>;
-  amount_not_in?: Maybe<Int[] | Int>;
-  amount_lt?: Maybe<Int>;
-  amount_lte?: Maybe<Int>;
-  amount_gt?: Maybe<Int>;
-  amount_gte?: Maybe<Int>;
+  amount?: Maybe<Float>;
+  amount_not?: Maybe<Float>;
+  amount_in?: Maybe<Float[] | Float>;
+  amount_not_in?: Maybe<Float[] | Float>;
+  amount_lt?: Maybe<Float>;
+  amount_lte?: Maybe<Float>;
+  amount_gt?: Maybe<Float>;
+  amount_gte?: Maybe<Float>;
   paymentStatus?: Maybe<Balance>;
   paymentStatus_not?: Maybe<Balance>;
   paymentStatus_in?: Maybe<Balance[] | Balance>;
@@ -2039,7 +2039,7 @@ export interface BillUpdateManyDataInput {
   vendor?: Maybe<String>;
   date?: Maybe<String>;
   account?: Maybe<String>;
-  amount?: Maybe<Int>;
+  amount?: Maybe<Float>;
   paymentStatus?: Maybe<Balance>;
   paymentType?: Maybe<Payment>;
   status?: Maybe<Status>;
@@ -2079,7 +2079,7 @@ export interface BillUpdateDataInput {
   vendor?: Maybe<String>;
   date?: Maybe<String>;
   account?: Maybe<String>;
-  amount?: Maybe<Int>;
+  amount?: Maybe<Float>;
   postedBy?: Maybe<UserUpdateOneWithoutBillsInput>;
   vendorId?: Maybe<VendorUpdateOneWithoutBillsInput>;
   accountId?: Maybe<AccountUpdateOneWithoutBillsInput>;
@@ -2516,7 +2516,7 @@ export interface BillUpdateInput {
   vendor?: Maybe<String>;
   date?: Maybe<String>;
   account?: Maybe<String>;
-  amount?: Maybe<Int>;
+  amount?: Maybe<Float>;
   postedBy?: Maybe<UserUpdateOneWithoutBillsInput>;
   vendorId?: Maybe<VendorUpdateOneWithoutBillsInput>;
   accountId?: Maybe<AccountUpdateOneWithoutBillsInput>;
@@ -2529,7 +2529,7 @@ export interface BillUpdateManyMutationInput {
   vendor?: Maybe<String>;
   date?: Maybe<String>;
   account?: Maybe<String>;
-  amount?: Maybe<Int>;
+  amount?: Maybe<Float>;
   paymentStatus?: Maybe<Balance>;
   paymentType?: Maybe<Payment>;
   status?: Maybe<Status>;
@@ -2689,7 +2689,7 @@ export interface InvoiceCreateInput {
   customer: String;
   date: String;
   account: String;
-  amount: Int;
+  amount: Float;
   postedBy?: Maybe<UserCreateOneInput>;
 }
 
@@ -2697,7 +2697,7 @@ export interface InvoiceUpdateInput {
   customer?: Maybe<String>;
   date?: Maybe<String>;
   account?: Maybe<String>;
-  amount?: Maybe<Int>;
+  amount?: Maybe<Float>;
   postedBy?: Maybe<UserUpdateOneInput>;
 }
 
@@ -2705,7 +2705,7 @@ export interface InvoiceUpdateManyMutationInput {
   customer?: Maybe<String>;
   date?: Maybe<String>;
   account?: Maybe<String>;
-  amount?: Maybe<Int>;
+  amount?: Maybe<Float>;
 }
 
 export interface UserUpdateInput {
@@ -3213,7 +3213,7 @@ export interface Bill {
   vendor: String;
   date: String;
   account: String;
-  amount: Int;
+  amount: Float;
   paymentStatus?: Balance;
   paymentType?: Payment;
   status?: Status;
@@ -3226,7 +3226,7 @@ export interface BillPromise extends Promise<Bill>, Fragmentable {
   vendor: () => Promise<String>;
   date: () => Promise<String>;
   account: () => Promise<String>;
-  amount: () => Promise<Int>;
+  amount: () => Promise<Float>;
   postedBy: <T = UserPromise>() => T;
   vendorId: <T = VendorPromise>() => T;
   accountId: <T = AccountPromise>() => T;
@@ -3244,7 +3244,7 @@ export interface BillSubscription
   vendor: () => Promise<AsyncIterator<String>>;
   date: () => Promise<AsyncIterator<String>>;
   account: () => Promise<AsyncIterator<String>>;
-  amount: () => Promise<AsyncIterator<Int>>;
+  amount: () => Promise<AsyncIterator<Float>>;
   postedBy: <T = UserSubscription>() => T;
   vendorId: <T = VendorSubscription>() => T;
   accountId: <T = AccountSubscription>() => T;
@@ -3262,7 +3262,7 @@ export interface BillNullablePromise
   vendor: () => Promise<String>;
   date: () => Promise<String>;
   account: () => Promise<String>;
-  amount: () => Promise<Int>;
+  amount: () => Promise<Float>;
   postedBy: <T = UserPromise>() => T;
   vendorId: <T = VendorPromise>() => T;
   accountId: <T = AccountPromise>() => T;
@@ -3689,7 +3689,7 @@ export interface Invoice {
   customer: String;
   date: String;
   account: String;
-  amount: Int;
+  amount: Float;
 }
 
 export interface InvoicePromise extends Promise<Invoice>, Fragmentable {
@@ -3699,7 +3699,7 @@ export interface InvoicePromise extends Promise<Invoice>, Fragmentable {
   customer: () => Promise<String>;
   date: () => Promise<String>;
   account: () => Promise<String>;
-  amount: () => Promise<Int>;
+  amount: () => Promise<Float>;
   postedBy: <T = UserPromise>() => T;
 }
 
@@ -3712,7 +3712,7 @@ export interface InvoiceSubscription
   customer: () => Promise<AsyncIterator<String>>;
   date: () => Promise<AsyncIterator<String>>;
   account: () => Promise<AsyncIterator<String>>;
-  amount: () => Promise<AsyncIterator<Int>>;
+  amount: () => Promise<AsyncIterator<Float>>;
   postedBy: <T = UserSubscription>() => T;
 }
 
@@ -3725,7 +3725,7 @@ export interface InvoiceNullablePromise
   customer: () => Promise<String>;
   date: () => Promise<String>;
   account: () => Promise<String>;
-  amount: () => Promise<Int>;
+  amount: () => Promise<Float>;
   postedBy: <T = UserPromise>() => T;
 }
 
@@ -3998,7 +3998,7 @@ export interface BillPreviousValues {
   vendor: String;
   date: String;
   account: String;
-  amount: Int;
+  amount: Float;
   paymentStatus?: Balance;
   paymentType?: Payment;
   status?: Status;
@@ -4013,7 +4013,7 @@ export interface BillPreviousValuesPromise
   vendor: () => Promise<String>;
   date: () => Promise<String>;
   account: () => Promise<String>;
-  amount: () => Promise<Int>;
+  amount: () => Promise<Float>;
   paymentStatus: () => Promise<Balance>;
   paymentType: () => Promise<Payment>;
   status: () => Promise<Status>;
@@ -4028,7 +4028,7 @@ export interface BillPreviousValuesSubscription
   vendor: () => Promise<AsyncIterator<String>>;
   date: () => Promise<AsyncIterator<String>>;
   account: () => Promise<AsyncIterator<String>>;
-  amount: () => Promise<AsyncIterator<Int>>;
+  amount: () => Promise<AsyncIterator<Float>>;
   paymentStatus: () => Promise<AsyncIterator<Balance>>;
   paymentType: () => Promise<AsyncIterator<Payment>>;
   status: () => Promise<AsyncIterator<Status>>;
@@ -4175,7 +4175,7 @@ export interface InvoicePreviousValues {
   customer: String;
   date: String;
   account: String;
-  amount: Int;
+  amount: Float;
 }
 
 export interface InvoicePreviousValuesPromise
@@ -4187,7 +4187,7 @@ export interface InvoicePreviousValuesPromise
   customer: () => Promise<String>;
   date: () => Promise<String>;
   account: () => Promise<String>;
-  amount: () => Promise<Int>;
+  amount: () => Promise<Float>;
 }
 
 export interface InvoicePreviousValuesSubscription
@@ -4199,7 +4199,7 @@ export interface InvoicePreviousValuesSubscription
   customer: () => Promise<AsyncIterator<String>>;
   date: () => Promise<AsyncIterator<String>>;
   account: () => Promise<AsyncIterator<String>>;
-  amount: () => Promise<AsyncIterator<Int>>;
+  amount: () => Promise<AsyncIterator<Float>>;
 }
 
 export interface UserSubscriptionPayload {
@@ -4348,14 +4348,14 @@ The `String` scalar type represents textual data, represented as UTF-8 character
 export type String = string;
 
 /*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
-*/
-export type Int = number;
-
-/*
 The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point). 
 */
 export type Float = number;
+
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
+*/
+export type Int = number;
 
 /*
 The `Boolean` scalar type represents `true` or `false`.

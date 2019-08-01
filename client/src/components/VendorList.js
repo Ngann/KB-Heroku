@@ -71,44 +71,40 @@ class VendorList extends Component {
     this.handleClose = this.handleClose.bind(this);
 
     this.state = {
-      show: false
+      show: false,
+      currentVendor: {},
     };
   }
 
   handleClose() {
-    this.setState({ show: false });
+    this.setState({ show: false, currentVendor: {} });
   }
 
-  handleShow() {
-    this.setState({ show: true });
+  handleShow(vendor) {
+    this.setState({ show: true, currentVendor: vendor });
   }
 
-  state = {
-    name: "",
-    contact: "",
-    address: "",
-    addressTwo: "",
-    city: "",
-    state: "",
-    country: ""
-  };
   // _updateCacheAfterDelete = (store) => {
   //   const data = store.readQuery({ query: VENDORS_QUERY })
   //   // const vendorDelete = data.vendors.find(vendor => vendor.id === vendorId)
   //   // vendorDelete.vendor =
   //   store.writeQuery({ query: VENDORS_QUERY, data })
   // }
-
+ 
   render() {
     const {
-      name,
-      contact,
-      address,
-      addressTwo,
-      city,
-      state,
-      country
+      currentVendor:{
+        name,
+        contact,
+        address,
+        addressTwo,
+        city,
+        state,
+        country,
+      }
     } = this.state;
+
+    const { currentVendor} = this.state
     return (
       <Query query={VENDORS_QUERY}>
         {({ loading, error, data }) => {
@@ -143,7 +139,9 @@ class VendorList extends Component {
                           <ButtonGroup size="sm">
                             <Button
                               variant="outline-secondary"
-                              onClick={this.handleShow}
+                              onClick={()=> {
+                                this.handleShow(vendor)
+                              }}
                             >
                               Edit
                             </Button>
@@ -165,142 +163,131 @@ class VendorList extends Component {
                         </td>
                       </tr>
                     </tbody>
-                    <Modal
-                      show={this.state.show}
-                      onHide={this.handleClose}
-                      size="lg"
-                      aria-labelledby="contained-modal-title-vcenter"
-                      centered
-                    >
-                      <Modal.Header closeButton>
-                        <Modal.Title>Vendor: {vendor.name}</Modal.Title>
-                      </Modal.Header>
-                      <Modal.Body>
-                        <Form.Row>
-                          <Col>
-                            <Form.Label>Vendor Name</Form.Label>
-                            <Form.Control
-                              className="mb2"
-                              value={name}
-                              onChange={e =>
-                                this.setState({ name: e.target.value })
-                              }
-                              type="text"
-                              placeholder=""
-                            />
-                          </Col>
-                          <Col>
-                            <Form.Label>Phone</Form.Label>
-                            <Form.Control
-                              className="mb2"
-                              value={contact}
-                              onChange={e =>
-                                this.setState({ contact: e.target.value })
-                              }
-                              type="text"
-                              placeholder=""
-                            />
-                          </Col>
-                        </Form.Row>
-
-                        <Form.Group controlId="formBasicContact">
-                          <Form.Label>Address</Form.Label>
-                          <Form.Control
-                            className="mb2"
-                            value={address}
-                            onChange={e =>
-                              this.setState({ address: e.target.value })
-                            }
-                            type="text"
-                            placeholder="1234 Main St"
-                          />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicContact">
-                          <Form.Label>Address 2</Form.Label>
-                          <Form.Control
-                            className="mb2"
-                            value={addressTwo}
-                            onChange={e =>
-                              this.setState({ addressTwo: e.target.value })
-                            }
-                            type="text"
-                            placeholder="Apartment, studio, or floor"
-                          />
-                        </Form.Group>
-                        <Form.Row>
-                          <Col>
-                            <Form.Group controlId="formBasicContact">
-                              <Form.Label>City</Form.Label>
-                              <Form.Control
-                                className="mb2"
-                                value={city}
-                                onChange={e =>
-                                  this.setState({ city: e.target.value })
-                                }
-                                type="text"
-                                placeholder=""
-                              />
-                            </Form.Group>
-                          </Col>
-                          <Col>
-                            <Form.Group controlId="formBasicContact">
-                              <Form.Label>State</Form.Label>
-                              <Form.Control
-                                className="mb2"
-                                value={state}
-                                onChange={e =>
-                                  this.setState({ state: e.target.value })
-                                }
-                                type="text"
-                                placeholder=""
-                              />
-                            </Form.Group>
-                          </Col>
-
-                          <Col>
-                            <Form.Group controlId="formBasicContact">
-                              <Form.Label>Zip</Form.Label>
-                              <Form.Control
-                                className="mb2"
-                                value={country}
-                                onChange={e =>
-                                  this.setState({ country: e.target.value })
-                                }
-                                type="text"
-                                placeholder=""
-                              />
-                            </Form.Group>
-                          </Col>
-                        </Form.Row>
-                      </Modal.Body>
-                      <Modal.Footer>
-                        <Button variant="secondary" onClick={this.handleClose}>
-                          Close
-                        </Button>
-                        <Mutation
-                          mutation={UPDATEVENDOR_MUTATION}
-                          variables={{
-                            id: vendor.id,
-                            name,
-                            contact,
-                            address,
-                            addressTwo,
-                            city,
-                            state,
-                            country
-                          }}
-                        >
-                          {updateVendorMutation => (
-                            <Button onClick={updateVendorMutation}>
-                              Save Changes
-                            </Button>
-                          )}
-                        </Mutation>
-                      </Modal.Footer>
-                    </Modal>
                   </Fragment>
                 ))}
               </Table>
+              <Modal
+                show={this.state.show}
+                onHide={this.handleClose}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>Vendor: {currentVendor.name}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <Form.Row>
+                    <Col>
+                      <Form.Label>Vendor Name</Form.Label>
+                      <Form.Control
+                        className="mb2"
+                        value={this.state.name}
+                        onChange={e => this.setState({name: e.target.value })}
+                        type="text"
+                        placeholder={currentVendor.name}
+                      />
+                    </Col>
+                    <Col>
+                      <Form.Label>Phone</Form.Label>
+                      <Form.Control
+                        className="mb2"
+                        value={contact}
+                        onChange={e =>
+                          this.setState({ contact: e.target.value })
+                        }
+                        type="text"
+                        placeholder={currentVendor.contact}
+                      />
+                    </Col>
+                  </Form.Row>
+
+                  <Form.Group controlId="formBasicContact">
+                    <Form.Label>Address</Form.Label>
+                    <Form.Control
+                      className="mb2"
+                      value={address}
+                      onChange={e => this.setState({ address: e.target.value })}
+                      type="text"
+                      // placeholder={currentVendor.address}
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formBasicContact">
+                    <Form.Label>Address 2</Form.Label>
+                    <Form.Control
+                      className="mb2"
+                      value={addressTwo}
+                      onChange={e =>
+                        this.setState({ addressTwo: e.target.value })
+                      }
+                      type="text"
+                      placeholder={currentVendor.addressTwo}
+                    />
+                  </Form.Group>
+                  <Form.Row>
+                    <Col>
+                      <Form.Group controlId="formBasicContact">
+                        <Form.Label>City</Form.Label>
+                        <Form.Control
+                          className="mb2"
+                          value={city}
+                          onChange={e =>
+                            this.setState({ city: e.target.value })
+                          }
+                          type="text"
+                          placeholder={currentVendor.city}
+                        />
+                      </Form.Group>
+                    </Col>
+                    <Col>
+                      <Form.Group controlId="formBasicContact">
+                        <Form.Label>State</Form.Label>
+                        <Form.Control
+                          className="mb2"
+                          value={state}
+                          onChange={e =>
+                            this.setState({ state: e.target.value })
+                          }
+                          type="text"
+                          placeholder={currentVendor.state}
+                        />
+                      </Form.Group>
+                    </Col>
+
+                    <Col>
+                      <Form.Group controlId="formBasicContact">
+                        <Form.Label>Zip</Form.Label>
+                        <Form.Control
+                          className="mb2"
+                          value={country}
+                          onChange={e =>
+                            this.setState({ country: e.target.value })
+                          }
+                          type="text"
+                          placeholder={currentVendor.country}
+                        />
+                      </Form.Group>
+                    </Col>
+                  </Form.Row>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={this.handleClose}>
+                    Close
+                  </Button>
+                  <Mutation
+                    mutation={UPDATEVENDOR_MUTATION}
+                    variables={{
+                      ...currentVendor
+                    }}
+                  >
+                    {updateVendorMutation => (
+                      <Button onClick={updateVendorMutation}>
+                        Save Changes
+                      </Button>
+                    )}
+                  </Mutation>
+                </Modal.Footer>
+              </Modal>
             </div>
           );
         }}

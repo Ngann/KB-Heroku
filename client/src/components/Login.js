@@ -31,10 +31,10 @@ const LOGIN_MUTATION = gql`
   }
 `
 
-const containerStyle = {
-  // backgroundColor: '#FDFFFC'
-  backgroundColor: "#020100"
-};
+// const containerStyle = {
+//   // backgroundColor: '#FDFFFC'
+//   backgroundColor: "#020100"
+// };
 
 const cardStyle = {
   width: '45%',
@@ -45,17 +45,17 @@ const cardStyle = {
   // backgroundColor: '#FDFFFC'
 };
 
-const rowStyle = {
-  // width: '45%',
-  float: 'none',
-  margin: '0 auto',
-  marginTop:'70px',
-  // marginRight:'25%',
-  // marginLeft:'25%',
-  // paddingTop:'25%',
-  // paddingBottom:'25%',
-  backgroundColor: '#235789'
-};
+// const rowStyle = {
+//   // width: '45%',
+//   float: 'none',
+//   margin: '0 auto',
+//   marginTop:'70px',
+//   // marginRight:'25%',
+//   // marginLeft:'25%',
+//   // paddingTop:'25%',
+//   // paddingBottom:'25%',
+//   backgroundColor: '#235789'
+// };
 
 const buttonStyle = {
   backgroundColor: "#00acc1",

@@ -73,7 +73,7 @@ class CreateAccount extends Component {
             value={name}
             onChange={e => this.setState({ name: e.target.value })}
             type="text"
-            placeholder="name"
+            placeholder="Name"
           />
         </Form.Group>
         <Form.Group controlId="formBasicnumber">
@@ -83,7 +83,7 @@ class CreateAccount extends Component {
             value={number}
             onChange={e => this.setState({ number: e.target.value })}
             type="text"
-            placeholder="number"
+            placeholder="Number"
           />
         </Form.Group>
         <Query query={ACCOUNTTYPE_QUERY}>

@@ -515,7 +515,7 @@ type Bill {
   vendor: String!
   date: String!
   account: String!
-  amount: Int!
+  amount: Float!
   postedBy: User
   vendorId: Vendor
   accountId: Account
@@ -535,7 +535,7 @@ input BillCreateInput {
   vendor: String!
   date: String!
   account: String!
-  amount: Int!
+  amount: Float!
   postedBy: UserCreateOneWithoutBillsInput
   vendorId: VendorCreateOneWithoutBillsInput
   accountId: AccountCreateOneWithoutBillsInput
@@ -569,7 +569,7 @@ input BillCreateWithoutAccountIdInput {
   vendor: String!
   date: String!
   account: String!
-  amount: Int!
+  amount: Float!
   postedBy: UserCreateOneWithoutBillsInput
   vendorId: VendorCreateOneWithoutBillsInput
   paymentStatus: Balance
@@ -582,7 +582,7 @@ input BillCreateWithoutPostedByInput {
   vendor: String!
   date: String!
   account: String!
-  amount: Int!
+  amount: Float!
   vendorId: VendorCreateOneWithoutBillsInput
   accountId: AccountCreateOneWithoutBillsInput
   paymentStatus: Balance
@@ -595,7 +595,7 @@ input BillCreateWithoutVendorIdInput {
   vendor: String!
   date: String!
   account: String!
-  amount: Int!
+  amount: Float!
   postedBy: UserCreateOneWithoutBillsInput
   accountId: AccountCreateOneWithoutBillsInput
   paymentStatus: Balance
@@ -638,7 +638,7 @@ type BillPreviousValues {
   vendor: String!
   date: String!
   account: String!
-  amount: Int!
+  amount: Float!
   paymentStatus: Balance
   paymentType: Payment
   status: Status
@@ -717,14 +717,14 @@ input BillScalarWhereInput {
   account_not_starts_with: String
   account_ends_with: String
   account_not_ends_with: String
-  amount: Int
-  amount_not: Int
-  amount_in: [Int!]
-  amount_not_in: [Int!]
-  amount_lt: Int
-  amount_lte: Int
-  amount_gt: Int
-  amount_gte: Int
+  amount: Float
+  amount_not: Float
+  amount_in: [Float!]
+  amount_not_in: [Float!]
+  amount_lt: Float
+  amount_lte: Float
+  amount_gt: Float
+  amount_gte: Float
   paymentStatus: Balance
   paymentStatus_not: Balance
   paymentStatus_in: [Balance!]
@@ -764,7 +764,7 @@ input BillUpdateDataInput {
   vendor: String
   date: String
   account: String
-  amount: Int
+  amount: Float
   postedBy: UserUpdateOneWithoutBillsInput
   vendorId: VendorUpdateOneWithoutBillsInput
   accountId: AccountUpdateOneWithoutBillsInput
@@ -777,7 +777,7 @@ input BillUpdateInput {
   vendor: String
   date: String
   account: String
-  amount: Int
+  amount: Float
   postedBy: UserUpdateOneWithoutBillsInput
   vendorId: VendorUpdateOneWithoutBillsInput
   accountId: AccountUpdateOneWithoutBillsInput
@@ -790,7 +790,7 @@ input BillUpdateManyDataInput {
   vendor: String
   date: String
   account: String
-  amount: Int
+  amount: Float
   paymentStatus: Balance
   paymentType: Payment
   status: Status
@@ -812,7 +812,7 @@ input BillUpdateManyMutationInput {
   vendor: String
   date: String
   account: String
-  amount: Int
+  amount: Float
   paymentStatus: Balance
   paymentType: Payment
   status: Status
@@ -863,7 +863,7 @@ input BillUpdateWithoutAccountIdDataInput {
   vendor: String
   date: String
   account: String
-  amount: Int
+  amount: Float
   postedBy: UserUpdateOneWithoutBillsInput
   vendorId: VendorUpdateOneWithoutBillsInput
   paymentStatus: Balance
@@ -875,7 +875,7 @@ input BillUpdateWithoutPostedByDataInput {
   vendor: String
   date: String
   account: String
-  amount: Int
+  amount: Float
   vendorId: VendorUpdateOneWithoutBillsInput
   accountId: AccountUpdateOneWithoutBillsInput
   paymentStatus: Balance
@@ -887,7 +887,7 @@ input BillUpdateWithoutVendorIdDataInput {
   vendor: String
   date: String
   account: String
-  amount: Int
+  amount: Float
   postedBy: UserUpdateOneWithoutBillsInput
   accountId: AccountUpdateOneWithoutBillsInput
   paymentStatus: Balance
@@ -1012,14 +1012,14 @@ input BillWhereInput {
   account_not_starts_with: String
   account_ends_with: String
   account_not_ends_with: String
-  amount: Int
-  amount_not: Int
-  amount_in: [Int!]
-  amount_not_in: [Int!]
-  amount_lt: Int
-  amount_lte: Int
-  amount_gt: Int
-  amount_gte: Int
+  amount: Float
+  amount_not: Float
+  amount_in: [Float!]
+  amount_not_in: [Float!]
+  amount_lt: Float
+  amount_lte: Float
+  amount_gt: Float
+  amount_gte: Float
   postedBy: UserWhereInput
   vendorId: VendorWhereInput
   accountId: AccountWhereInput
@@ -1523,7 +1523,7 @@ type Invoice {
   customer: String!
   date: String!
   account: String!
-  amount: Int!
+  amount: Float!
   postedBy: User
 }
 
@@ -1538,7 +1538,7 @@ input InvoiceCreateInput {
   customer: String!
   date: String!
   account: String!
-  amount: Int!
+  amount: Float!
   postedBy: UserCreateOneInput
 }
 
@@ -1571,7 +1571,7 @@ type InvoicePreviousValues {
   customer: String!
   date: String!
   account: String!
-  amount: Int!
+  amount: Float!
 }
 
 type InvoiceSubscriptionPayload {
@@ -1596,7 +1596,7 @@ input InvoiceUpdateInput {
   customer: String
   date: String
   account: String
-  amount: Int
+  amount: Float
   postedBy: UserUpdateOneInput
 }
 
@@ -1604,7 +1604,7 @@ input InvoiceUpdateManyMutationInput {
   customer: String
   date: String
   account: String
-  amount: Int
+  amount: Float
 }
 
 input InvoiceWhereInput {
@@ -1680,14 +1680,14 @@ input InvoiceWhereInput {
   account_not_starts_with: String
   account_ends_with: String
   account_not_ends_with: String
-  amount: Int
-  amount_not: Int
-  amount_in: [Int!]
-  amount_not_in: [Int!]
-  amount_lt: Int
-  amount_lte: Int
-  amount_gt: Int
-  amount_gte: Int
+  amount: Float
+  amount_not: Float
+  amount_in: [Float!]
+  amount_not_in: [Float!]
+  amount_lt: Float
+  amount_lte: Float
+  amount_gt: Float
+  amount_gte: Float
   postedBy: UserWhereInput
   AND: [InvoiceWhereInput!]
   OR: [InvoiceWhereInput!]

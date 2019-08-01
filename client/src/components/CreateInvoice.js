@@ -4,7 +4,7 @@ import gql from 'graphql-tag'
 import { Form , Button} from 'react-bootstrap'
 
 const CREATEINVOICE_MUTATION = gql`
-  mutation CreateInvoiceMutation($customer: String!, $date: String!, $account: String!, $amount: Int!) {
+  mutation CreateInvoiceMutation($customer: String!, $date: String!, $account: String!, $amount: Float!) {
     createInvoice(customer: $customer, date: $date, account: $account, amount: $amount) {
       id
       customer
@@ -69,8 +69,8 @@ class CreateInvoice extends Component {
           <Form.Control
             className="mb2"
             value={amount}
-            onChange={e => this.setState({ amount: parseInt(e.target.value) })}
-            type="text"
+            onChange={e => this.setState({ amount: parseFloat(e.target.value) })}
+            type="number"
             placeholder="amount"
           />
         </Form.Group>
