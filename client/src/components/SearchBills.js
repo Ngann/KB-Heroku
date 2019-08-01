@@ -93,6 +93,20 @@ class SearchBills extends Component {
               </tbody>
             </Fragment>
           ))}
+          {/* {this.state.bills.map((bill, index) => (
+            <Fragment key={bill.id} bill={bill} index={index}>
+              <tbody>
+                <tr>
+                  <td>{bill.id}</td>
+                  <td>{bill.date}</td>
+                  <td>{bill.vendorId.name}</td>
+                  <td>{bill.accountId.name}</td>
+                  <td>{bill.amount}</td>
+                  <td> Open</td>
+                </tr>
+              </tbody>
+            </Fragment>
+          ))} */}
         </Table>
       </div>
     )
