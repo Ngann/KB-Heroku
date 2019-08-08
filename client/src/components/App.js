@@ -19,6 +19,9 @@ const SearchBills = lazy(()=>  import('./SearchBills')) ;
 const SearchInvoices = lazy(()=>  import('./SearchInvoices')) ;
 const CreateAccount = lazy(()=>  import('./CreateAccount')) ;
 const AccountList = lazy(() => import('./AccountList'));
+const CustomerControl = lazy(()=>  import('./CustomerControl')) ;
+const CustomerListTwo = lazy(()=>  import('./CustomerListTwo')) ;
+const CreateCustomerTwo = lazy(()=>  import('./CreateCustomerTwo')) ;
 
 const App = () => (
   <div className="App">
@@ -40,6 +43,9 @@ const App = () => (
         <Route exact path="/chart" component={DashboardControl} />
         <Route exact path="/createaccount" component={CreateAccount} />
         <Route path="/accountlist" component={AccountList} />
+        <Route path="/customercontrol" component={CustomerControl} />
+        <Route path="/customerlisttwo" component={CustomerListTwo} />
+        <Route path="/createcustomertwo" component={CreateCustomerTwo} />
       </Switch>
     </Suspense>
   </div>
