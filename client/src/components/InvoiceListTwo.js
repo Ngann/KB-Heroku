@@ -3,6 +3,37 @@ import { Query, Mutation } from "react-apollo";
 import gql from "graphql-tag";
 import { Modal, Button, Table, ButtonGroup, Form } from "react-bootstrap";
 
+let invoices = [
+  {
+    name: "Customer One",
+    account: "account One",
+    amount: "amount One",
+    status: "status One",
+    date: "date One"
+  },
+  {
+    name: "Customer Two",
+    account: "account Two",
+    amount: "amount Two",
+    status: "status Two",
+    date: "date Two"
+  },
+  {
+    name: "Customer Three",
+    account: "account Three",
+    amount: "amount Three",
+    status: "status Three",
+    date: "date Three"
+  },
+  {
+    name: "Customer Four",
+    account: "account Four",
+    amount: "amount Four",
+    status: "status Four",
+    date: "date Four"
+  }
+];
+
 const containerStyle = {
   marginTop: "10%",
   backgroundColor: "#FDFFFC"
@@ -35,31 +66,35 @@ class InvoiceListTwo extends Component {
           <thead>
             <tr>
               <th>Date</th>
-              <th>Vendor Name</th>
+              <th>Customer Name</th>
               <th>Account</th>
               <th>Amount</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
           <Fragment>
             <tbody>
-              <tr>
-                <td />
-                <td />
-                <td />
-                <td />
-                <td>
-                  <ButtonGroup size="sm">
-                    <Button
-                      variant="outline-secondary"
-                      onClick={this.handleShow}
-                    >
-                      Edit
-                    </Button>
-                    <Button variant="outline-secondary">Delete</Button>
-                  </ButtonGroup>
-                </td>
-              </tr>
+              {invoices.map((invoice, i) => (
+                <tr>
+                  <td>{invoice.date}</td>
+                  <td>{invoice.name}</td>
+                  <td>{invoice.account}</td>
+                  <td>{invoice.amount}</td>
+                  <td>{invoice.status}</td>
+                  <td>
+                    <ButtonGroup size="sm">
+                      <Button
+                        variant="outline-secondary"
+                        onClick={this.handleShow}
+                      >
+                        Edit
+                      </Button>
+                      <Button variant="outline-secondary">Delete</Button>
+                    </ButtonGroup>
+                  </td>
+                </tr>
+              ))}
             </tbody>
             <Modal
               show={this.state.show}

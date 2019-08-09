@@ -1,12 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { ButtonGroup, Table, Button, Modal, Form, Col } from "react-bootstrap";
 
-const containerStyle = {
-  marginTop: "10%",
-  backgroundColor: "#FDFFFC"
-};
-
-let listOfCustomers = [
+let customers = [
   {
     name: "Customer One",
     contact: "Contact One",
@@ -36,24 +31,30 @@ let listOfCustomers = [
     state: "State Four"
   }
 ];
+
+const containerStyle = {
+  marginTop: "10%",
+  backgroundColor: "#FDFFFC"
+};
+
 class CustomerListTwo extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            show: false
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false
+    };
 
-        this.handleShow = this.handleShow.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-    }
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
 
-    handleClose() {
-        this.setState({ show: false});
-    }
-        
-    handleShow() {
-    this.setState({ show: true});
-    }
+  handleClose() {
+    this.setState({ show: false });
+  }
+
+  handleShow() {
+    this.setState({ show: true });
+  }
 
   render() {
     return (
@@ -71,7 +72,7 @@ class CustomerListTwo extends Component {
           </thead>
           <Fragment>
             <tbody>
-              {listOfCustomers.map((customer,i) => (
+              {customers.map((customer, i) => (
                 <tr key={i}>
                   <td>{customer.name}</td>
                   <td>{customer.contact}</td>
@@ -80,7 +81,13 @@ class CustomerListTwo extends Component {
                   <td>{customer.state}</td>
                   <td>
                     <ButtonGroup size="sm">
-                      <Button variant="outline-secondary" onClick={this.handleShow}> Edit</Button>
+                      <Button
+                        variant="outline-secondary"
+                        onClick={this.handleShow}
+                      >
+                        {" "}
+                        Edit
+                      </Button>
                       <Button variant="outline-secondary"> Delete</Button>
                     </ButtonGroup>
                   </td>
@@ -91,13 +98,13 @@ class CustomerListTwo extends Component {
         </Table>
 
         <Modal
-         show={this.state.show}
-         onHide={this.handleClose}
+          show={this.state.show}
+          onHide={this.handleClose}
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
         >
-          <Modal.Header >
+          <Modal.Header>
             <Modal.Title>Customer</Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -143,7 +150,9 @@ class CustomerListTwo extends Component {
             </Form.Row>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>Close</Button>
+            <Button variant="secondary" onClick={this.handleClose}>
+              Close
+            </Button>
             <Button>Save Changes</Button>
           </Modal.Footer>
         </Modal>
