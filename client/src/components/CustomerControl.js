@@ -2,7 +2,8 @@ import React, { Component} from 'react';
 import CreateCustomerTwo from './CreateCustomerTwo';
 import CustomerListTwo from './CustomerListTwo';
 import { Button, ButtonGroup } from "react-bootstrap";
-import SearchBills from './SearchBills';
+import SearchInvoicesTwo from './SearchInvoicesTwo';
+import InvoiceListTwo from './InvoiceListTwo';
 
 const buttonStyle = {
     padding: "2%",
@@ -17,24 +18,42 @@ class CustomerControl extends Component {
             customerForm: false,
             search: false,
             addButton: true,
-            searchButton: true
+            searchButton: true,
+            customerList: true,
+            invoiceList: false,
         }
 
         this.openCustomerForm = this.openCustomerForm.bind(this)
         this.openSearch = this.openSearch.bind(this)
+        this.openInvoices = this.openInvoices.bind(this)
     }
 
 openCustomerForm() {
     this.setState({
         customerForm: !this.state.customerForm,
-        addButton: !this.state.addButton
+        addButton: !this.state.addButton,
+        customerList: true,
+        invoiceList: false,
+        search: false,
     })
 }
 
 openSearch() {
     this.setState({
         search: !this.state.search,
-        searchButton: !this.state.searchButton
+        searchButton: !this.state.searchButton,
+        customerForm: false,
+        customerList: false,
+        invoiceList: false
+    })
+}
+
+openInvoices(){
+    this.setState({
+        invoiceList: !this.state.invoiceList,
+        search: false,
+        customerList: false,
+        customerForm: false,
     })
 }
 
@@ -44,15 +63,17 @@ openSearch() {
             <div>
                 <div className="d-flex flex-column" style={buttonStyle}>
                     <ButtonGroup className="mt-3">
-                        <Button size="md" variant="outline-success" onClick={this.openCustomerForm}>{this.state.addButton ? 'Add Customer': 'Close Customer Form' }</Button> 
+                        <Button size="md" variant="outline-success" onClick={this.openCustomerForm}>{this.state.addButton ? 'Add Customer': 'Close Customer Form' }</Button>
+                        <Button size="md" variant="outline-success" onClick={this.openInvoices}> Invoices </Button> 
                         <Button size="md" variant="outline-success"> Invoice Payments</Button>
                         <Button size="md" variant="outline-success"> Reports</Button>
                         <Button size="md" variant="outline-success" onClick={this.openSearch}> {this.state.searchButton ? 'Search': 'Close Search'}</Button>
                     </ButtonGroup>
                 </div>
                  {this.state.customerForm ? <CreateCustomerTwo/> : null }
-                 {this.state.search ? <SearchBills/> : null }
-                <CustomerListTwo/>
+                 {this.state.search ? <SearchInvoicesTwo/> : null }
+                 {this.state.customerList ? <CustomerListTwo/> : null }
+                 {this.state.invoiceList ? <InvoiceListTwo/> : null }
             </div>
         )
     }

@@ -22,6 +22,7 @@ const AccountList = lazy(() => import('./AccountList'));
 const CustomerControl = lazy(()=>  import('./CustomerControl')) ;
 const CustomerListTwo = lazy(()=>  import('./CustomerListTwo')) ;
 const CreateCustomerTwo = lazy(()=>  import('./CreateCustomerTwo')) ;
+const InvoiceListTwo = lazy(()=>  import('./InvoiceListTwo')) ;
 
 const App = () => (
   <div className="App">
@@ -46,6 +47,7 @@ const App = () => (
         <Route path="/customercontrol" component={CustomerControl} />
         <Route path="/customerlisttwo" component={CustomerListTwo} />
         <Route path="/createcustomertwo" component={CreateCustomerTwo} />
+        <Route path="/invoicelisttwo" component={InvoiceListTwo} />
       </Switch>
     </Suspense>
   </div>
