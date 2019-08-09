@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { ButtonGroup, Table, Button, Modal, Form, Col } from "react-bootstrap";
+import List from "./Table"
 
 let customers = [
   {
@@ -59,6 +60,7 @@ class CustomerListTwo extends Component {
   render() {
     return (
       <div className="container" style={containerStyle}>
+        <List datas={customers}/>
         <Table striped hover size="sm">
           <thead>
             <tr>
