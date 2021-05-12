@@ -7,7 +7,7 @@
     "apollo-link-context": "^1.0.18",
     "apollo-link-ws": "1.0.7",
     "bootstrap": "^4.3.1",
-    "chart.js": "^2.7.3",
+    "chart.js": "^2.9.4",
     "graphql": "^14.3.1",
     "mdbreact": "^4.11.0",
     "prop-types": "^15.7.2",
