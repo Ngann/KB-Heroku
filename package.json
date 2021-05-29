@@ -16,7 +16,7 @@
     "prisma-client-lib": "^1.34.0",
     "supertest": "^4.0.2",
     "utf-8-validate": "^5.0.2",
-    "ws": "^7.0.1"
+    "ws": "^7.4.6"
   },
   "scripts": {
     "start": "node index.js",
